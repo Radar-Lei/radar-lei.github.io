@@ -6,9 +6,9 @@ header-img: "img/post-bg-rwd.jpg"
 ---
 
 <!-- Language Selector -->
-<select class="sel-lang" onchange= "onLanChange(this.options[this.options.selectedIndex].value)">
-    <option value="0" selected> Chinese </option>
-    <option value="1" >  English </option>
+	<select class="sel-lang" onchange= "onLanChange(this.options[this.options.selectedIndex].value)">
+    <option value="0" selected> 中文 Chinese </option>
+    <option value="1"> 英文 English </option>
 </select>
 
 <!-- Chinese Version -->
@@ -62,10 +62,8 @@ header-img: "img/post-bg-rwd.jpg"
     var $zh = document.querySelector(".zh");
     var $en = document.querySelector(".en");
     var $select = document.querySelector("select");
-
     // bind hashchange event
     window.addEventListener('hashchange', _render);
-
     // handle render
     function _render(){
         var _hash = window.location.hash;
@@ -82,7 +80,6 @@ header-img: "img/post-bg-rwd.jpg"
             $en.style.display = "none";
         }
     }
-
     // handle select change
     function onLanChange(index){
         if(index == 0){
@@ -91,7 +88,6 @@ header-img: "img/post-bg-rwd.jpg"
             window.location.hash = "#en"
         }
     }
-
     // init
     _render();
 </script>
