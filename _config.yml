@@ -1,6 +1,6 @@
 # Site settings
-title: RadarLei's Blog
-SEOTitle: 雷达的博客 | RadarLei's Blog
+title: Da Lei
+SEOTitle: Da Lei | RadarLei
 header-img: img/post-bg-desk.jpg
 email: greatradar@gmail.com
 description: "Every failure is leading towards success."
@@ -11,7 +11,7 @@ github_repo: "https://github.com/Radar-Lei/radar-lei.github.io.git" # you code r
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "Goals determine what you going to be!"
+sidebar-about-description: "Early start makes easy stages."
 sidebar-avatar: /img/about_me.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
