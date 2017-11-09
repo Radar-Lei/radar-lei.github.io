@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="echarts.js"></script>
+    <script src="jiangsu.js"></script>
+</head>
+<body>
+    <div id="main" style="width: 1000px;height:600px;"></div>
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('main'));
+        myChart.setOption({
+            series: [{
+                type: 'map',
+                map: '江苏'
+            }]
+        });
+    </script>
+</body>
+</html>
