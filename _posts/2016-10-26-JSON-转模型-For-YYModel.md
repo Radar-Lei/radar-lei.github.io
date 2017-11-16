@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      JSON转模型 For YYModel
-subtitle:   使用 YYModel库 快速完成 JSON 转模型
+subtitle:   使用 YYModel库完成 JSON转模
 date:       2016-10-26
 author:     Radar
 header-img: img/post-bg-ios9-web.jpg
@@ -10,7 +10,7 @@ tags:
     - 开发技巧
 ---
 
->JSON转模型是我们做iOS开发的基础技能，本文将通过[YYModel](https://github.com/ibireme/YYModel)这个框架安全快速的完成JSON到模型的转换，其中还会介绍到一款好用的插件[ESJsonFormat](https://github.com/EnjoySR/ESJsonFormat-Xcode)。
+>JSON转模型是我们做开发的基础技能，本文将通过[YYModel](https://github.com/ibireme/YYModel)这个框架安全快速的完成JSON到模型的转换，其中还会介绍到一款好用的插件[ESJsonFormat](https://github.com/EnjoySR/ESJsonFormat-Xcode)。
 
 # 1、首先创建模型类
 创建模型类我们可以通过[ESJsonFormat](https://github.com/EnjoySR/ESJsonFormat-Xcode)这款插件快速完成。
