@@ -1,20 +1,3 @@
----
-layout:     post
-title:      gl visualization of taxi trajectory in Chengdu
-subtitle:   成都出租车轨迹可视化gl
-date:       2017-12-2
-author:     Radar
-header-img: img/post-bg-debug.png
-catalog: true
-tags:
-	- GPS
-	- Taxi
-	- Visualization
----
-
-
-## webgl版出租车轨迹可视化
-	数据来自公开数据源,主要利用echarts.js及mapbox.js两个包实现可视化效果
 <html style="height: 100%">
    <head>
 		<script src='https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.js'></script>
@@ -26,6 +9,7 @@ tags:
       <div id="container" style="width:750px;height:500px;"></div>
       <br>
       <script type="text/javascript" src="http://data-visual.cn/datav/src/js/echarts/echarts-3.8.4.min.js"></script>
+	  <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 
       <script type="text/javascript">
         var myChart = echarts.init(document.getElementById('container'));
@@ -37,7 +21,7 @@ tags:
 		var taxiRoutes = [];
 		
 		
-		$.get(uploadedDataURL, function(linedata) {
+		$.get(uploadedDataURL, function(linedata){
 				var data = linedata.data;
 				var hStep = 300 / (data.length - 1);
 				
@@ -126,5 +110,3 @@ tags:
        </script>
    </body>
 </html>
-
-
