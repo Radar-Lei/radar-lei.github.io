@@ -32,7 +32,7 @@ tags:
 		 
 		mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JlYXRyYWRhIiwiYSI6ImNqYW9iaDM0ZTBmZXAyeG1paW12MzM4MnAifQ.Lz_wF3srdlOYOJBvwWT5VA'; <!--Please do not use my token-->
 		
-		var uploadedDataURL = "../js/taxi.json";
+		var uploadedDataURL = "/js/taxi.json";
 		
 		var taxiRoutes = [];
 		
