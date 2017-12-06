@@ -381,9 +381,8 @@ var mChart = echarts.init(document.getElementById('main1'),'dark');
 
 var uploadedDataURL = {{ site.data.taxi | jsonify }};
 
-$.getJSON(uploadedDataURL, function(linedata){
-var data1 = json_parse(JSON.stringify(linedata))
-data1 = data1.data;
+
+data1 = uploadedDataURL.data;
 var taxiRoutes =[];
 var i = 0;
 var hStep = 300 / (data.length - 1);
@@ -557,7 +556,7 @@ option = {
     }]
 };
 mChart.setOption(option);
-})
+}
 
 
 
