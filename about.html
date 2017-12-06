@@ -379,9 +379,9 @@ Some Data Visualisation Examples
 <script>
 var mChart = echarts.init(document.getElementById('main1'),'dark');
 
-<!-- var uploadedDataURL = "site.data.taxi"; -->
+var uploadedDataURL = "{{site.data.taxi}}";
 
-$.getJSON("{{site.data.taxi}}", function(linedata){
+$.getJSON(uploadedDataURL, function(linedata){
 var data1 = json_parse(JSON.stringify(linedata))
 data1 = data1.data;
 var taxiRoutes =[];
