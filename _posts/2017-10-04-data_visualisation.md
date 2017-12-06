@@ -16,7 +16,7 @@ tags:
 ### A dynamic demonstration displaying intercity bus passenger distribution of Jiangsu, China.
  [click this](/4-30/test2.html) 
  
-[hi](234.html)
+[hi](/234.html)
 
 ## The Bikesharing System in Nanjing
 ### OD pairs
