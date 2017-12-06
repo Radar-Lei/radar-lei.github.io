@@ -385,7 +385,7 @@ var uploadedDataURL = {{ site.data.taxi | jsonify }};
 data1 = uploadedDataURL.data;
 var taxiRoutes =[];
 var i = 0;
-var hStep = 300 / (data.length - 1);
+var hStep = 300 / (data1.length - 1);
 
 for (var x in data) {
     // i++;
