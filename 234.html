@@ -21,7 +21,7 @@
 		
 		var uploadedDataURL = "./js/taxi.json";
 		
-		$.get(uploadedDataURL, function(linedata){
+		$.getJSON(uploadedDataURL, function(linedata){
 				var data1 = json_parse(linedata)
 				data1 = data1.data;
 			    var taxiRoutes =[];
