@@ -567,14 +567,13 @@ mChart.setOption(option);
 		 
 		mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JlYXRyYWRhIiwiYSI6ImNqYW9iaDM0ZTBmZXAyeG1paW12MzM4MnAifQ.Lz_wF3srdlOYOJBvwWT5VA'; <!--Please do not use my token-->
 		var uploadedDataURL = {{ site.data.changzhouGPS2 | jsonify }};
-<!-- 		var uploadedDataURL = "./js/changzhouGPS2.json"; -->
+<!-- var uploadedDataURL = "./js/changzhouGPS2.json"-->
 		
 		<!--use json.parse(linedata) instead if running it locally-->
-				var data1 = uploadedDataURL.data;
-				data1 = data1.data;
+				data2 = uploadedDataURL.data;
 			    var taxiRoutes =[];
 				var i = 0;
-				for (var x in data1) {
+				for (var x in data2) {
 					// i++;
 					// if(i<5000)
 					//     continue;
