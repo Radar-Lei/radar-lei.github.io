@@ -662,6 +662,156 @@ These bus lines are just like the blood vessels of Changzhou.The lighter ones ar
 <a href="http://radar-lei.top/234.html" target="_blank"><big>To See This in Full Screen</big></a>
 </p>
 
+<p><strong>4. NY Times Twitter Visualization 2017.</strong><br />
+Data from Prof.Satish of PWU.<br />
+The tweets shown in black boxes are not complete due to data limits. People were just talking about Hurricane Harvey.</p>
+<div id="main8" style="width: 650px;height:650px;">
+<script>
+
+var myChart = echarts.init(document.getElementById('main8'));
+
+var geoCoordMap = {{ site.data.geoCoordMap1 | jsonify }};
+var data = {{ site.data.tweets_data | jsonify }};
+var convertData = function(data) {
+	var res = [];
+	for(var i = 0; i < data.length; i++) {
+		var geoCoord = geoCoordMap[data[i].name];
+		if(geoCoord) {
+			res.push({
+				name: data[i].name,
+				value: geoCoord.concat(data[i].value)
+			});
+		}
+	}
+	return res;
+};
+var app = {};
+data1 = convertData(data);
+var timetable = {};
+option = null;
+
+option = {
+	backgroundColor: '#404a59',
+	title: {
+		text: 'NY Times Twitter Visualization',
+		subtext: "data from Prof.Satish's team",
+		sublink: 'http://web.ics.purdue.edu/~sukkusur/',
+		left: 'center',
+		textStyle: {
+			color: 'black',
+			fontSize: 24
+		},
+		subtextStyle: {
+			color: '#696969',
+			fontSize: 18,
+			fontWeight: 'bold'
+		}
+	},
+	legend: {
+	left: '10%',
+	top: '10%',
+	data: ['asdasd']
+	},
+	tooltip: {
+		trigger: 'item',
+		formatter: '{b}'
+	},
+	leaflet: {
+		center: [-96.94083333,29.3402],
+		zoom: 9,
+		roam: true,
+		layerControl: {
+			position: 'topleft'
+		},
+		tiles: [{
+			text: 'Open Street Map',
+			url: 'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href="http://hot.openstreetmap.org/" target="_blank">Humanitarian OpenStreetMap Team</a>'
+		}]
+	},
+	series: [{
+			name: 'tweets',
+			type: 'scatter',
+			coordinateSystem: 'leaflet',
+			data: data1,
+			symbolSize: 9,
+			itemStyle: {
+				normal: {
+					color: 'red',
+					opacity: 0.4,
+				}
+			},
+			animationThreshold: 3000,
+			animationEasing: 'elasticOut',
+			animationDelay: function(idx) {
+			return idx * 20;
+			},
+		}
+	],
+	blendMode: 'lighter',
+	animationDelayUpdate: function(idx) {
+	return idx * 10;
+	}
+};
+
+app.currentIndex = -1;
+
+setInterval(function () {
+    var dataLen = option.series[0].data.length;
+    // 取消之前高亮的图形
+    myChart.dispatchAction({
+        type: 'downplay',
+        seriesIndex: 0,
+        dataIndex: app.currentIndex
+    });
+    app.currentIndex = (app.currentIndex + 1) % dataLen;
+    // 高亮当前图形
+    myChart.dispatchAction({
+        type: 'highlight',
+        seriesIndex: 0,
+        dataIndex: app.currentIndex
+    });
+    // 显示 tooltip
+    myChart.dispatchAction({
+        type: 'showTip',
+        seriesIndex: 0,
+        dataIndex: app.currentIndex
+    });
+}, 2000);
+
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+};
+(function() {
+	var throttle = function(type, name, obj) {
+		obj = obj || window;
+		var running = false;
+		var func = function() {
+			if(running) {
+				return;
+			}
+			running = true;
+			requestAnimationFrame(function() {
+				obj.dispatchEvent(new CustomEvent(name));
+				running = false;
+			});
+		};
+		obj.addEventListener(type, func);
+	};
+
+	/* init - you can init any event */
+	throttle("resize", "optimizedResize");
+})();
+
+// handle event
+window.addEventListener("optimizedResize", function() {
+	myChart.resize({
+		width: 'auto',
+		height: 'auto'
+	});
+});
+</script>
+</div>
 
 <p><strong>4. The Nanjing Bikesharing System has expanded dramatically since March,2016.</strong></p>	
 <div id="htmlwidget-45886f468aa8d9b2f549" style="width:650px;height:600px;" class="leaflet html-widget"></div>
