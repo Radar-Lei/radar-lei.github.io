@@ -25,7 +25,7 @@
       <div id="container" style="width:100%;height:100%;"></div>
       <script type="text/javascript">
         var myChart = echarts.init(document.getElementById('container'));
-		var uploadedDataURL = { site.data.data_01 | jsonify };
+		var uploadedDataURL = "./_data/didi_01.json"
 		var taxiRoutes =[];
 		$.getJSON(uploadedDataURL, function(linedata){
 		var data1 = json_parse(JSON.stringify(linedata))
