@@ -13,6 +13,9 @@
 	</head>
 	
    <body style="height: 100%; margin: 0">
+   <SCRIPT language=javascript>  
+function click() {if (event.button==2) {alert('不许你偷看！');}}document.onmousedown=click  
+</SCRIPT>
 			<style>
 			#container {
 				width: 100%;
@@ -207,7 +210,7 @@ myChart.setOption(option);
 }
 else {
 option_1 = {}
-i = -1;myChart.clear;}
+i = -1;myChart.clear;break}
 }, 50);
        </script>
 
