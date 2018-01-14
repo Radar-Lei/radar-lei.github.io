@@ -27,7 +27,38 @@
 function click() {if (event.button==2) {alert('不许你偷看！');}}document.onmousedown=click  
 </SCRIPT> 
       <script type="text/javascript">
-	  	var option = {
+		var option = {};
+        var myChart = echarts.init(document.getElementById('container'));
+		var uploadedDataURL = "./js/didi_01.json"
+		var taxiRoutes =[];
+		$.getJSON(uploadedDataURL, function(linedata){
+		var data1 = json_parse(JSON.stringify(linedata))
+		data1 = data1.data;
+		var hStep = 3000 / (data1.length - 1);
+
+		var i = 0;
+		//var hStep = 300 / (data1.length - 1);
+		for (var x in data1) {
+			// i++;
+			// if(i<5000)
+			//     continue;
+			var line = data1[x];
+			// if(busLines.length>500)
+			//     break;
+			var pointString = line.ROAD_LINE;
+			var pointArr = pointString.split(';');
+			var lnglats = [];
+			for (var j in pointArr) {
+				lnglats.push(pointArr[j].split(','))
+			};
+			taxiRoutes.push({
+				coords: lnglats,
+				lineStyle: {
+					color: echarts.color.modifyHSL('#5A94DF', Math.round(hStep * x))
+				}
+			})
+		};
+		option = {
 			title: {
 				text: "The Visualization of Didi's GPS Data in Shanghai\nData from Prof.Sharon Di",
 				textAlign: 'center',
@@ -93,36 +124,6 @@ function click() {if (event.button==2) {alert('不许你偷看！');}}document.o
 				},
 				zlevel: 1
 			}]
-		};
-        var myChart = echarts.init(document.getElementById('container'));
-		var uploadedDataURL = "./js/didi_01.json"
-		var taxiRoutes =[];
-		$.getJSON(uploadedDataURL, function(linedata){
-		var data1 = json_parse(JSON.stringify(linedata))
-		data1 = data1.data;
-		var hStep = 3000 / (data1.length - 1);
-
-		var i = 0;
-		//var hStep = 300 / (data1.length - 1);
-		for (var x in data1) {
-			// i++;
-			// if(i<5000)
-			//     continue;
-			var line = data1[x];
-			// if(busLines.length>500)
-			//     break;
-			var pointString = line.ROAD_LINE;
-			var pointArr = pointString.split(';');
-			var lnglats = [];
-			for (var j in pointArr) {
-				lnglats.push(pointArr[j].split(','))
-			};
-			taxiRoutes.push({
-				coords: lnglats,
-				lineStyle: {
-					color: echarts.color.modifyHSL('#5A94DF', Math.round(hStep * x))
-				}
-			})
 		};
 myChart.setOption(option);
 		})
@@ -210,7 +211,7 @@ myChart.setOption(option);
 }
 else {
 option_1 = {}
-i = -1;myChart.setoption({}, true);}
+i = -1;myChart.setOption({}, true);}
 }, 50);
        </script>
 
