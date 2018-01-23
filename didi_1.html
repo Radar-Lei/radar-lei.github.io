@@ -105,24 +105,6 @@ function click() {if (event.button==2) {alert('不许你偷看！');}}document.o
 						width: 1
 					}
 				},
-			}, {
-				type: 'lines',
-				coordinateSystem: 'leaflet',
-				polyline: true,
-				data: {},
-				lineStyle: {
-					normal: {
-						width: 0
-					}
-				},
-				effect: {
-					period: 30,
-					//constantSpeed: 6,
-					show: true,
-					trailLength: 0.5,
-					symbolSize: 4
-				},
-				zlevel: 1
 			}]
 		};
 myChart.setOption(option);
