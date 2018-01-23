@@ -109,7 +109,7 @@ function click() {if (event.button==2) {alert('不许你偷看！');}}document.o
 				type: 'lines',
 				coordinateSystem: 'leaflet',
 				polyline: true,
-				data: {},
+				data: taxiRoutes,
 				lineStyle: {
 					normal: {
 						width: 0
@@ -119,8 +119,8 @@ function click() {if (event.button==2) {alert('不许你偷看！');}}document.o
 					period: 30,
 					//constantSpeed: 6,
 					show: true,
-					trailLength: 0.5,
-					symbolSize: 4
+					trailLength: 0,
+					symbolSize: 0
 				},
 				zlevel: 1
 			}]
