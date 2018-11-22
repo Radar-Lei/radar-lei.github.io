@@ -28,7 +28,7 @@ function click() {if (event.button==2) {alert('不许你偷看！');}}document.o
 </SCRIPT> 
       <script type="text/javascript">
 		var option = {};
-        var myChart = echarts.init(document.getElementById('container'));
+        var myChart = echarts.init(document.getElementById('container'), {renderer:'svg'});
 		var uploadedDataURL = "./js/didi_01.json"
 		var taxiRoutes =[];
 		$.getJSON(uploadedDataURL, function(linedata){
