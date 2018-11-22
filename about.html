@@ -569,7 +569,7 @@ It may take a while to load the map.</p>
         var myChart = echarts.init(document.getElementById('Changzhou'));
 		 
 		mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JlYXRyYWRhIiwiYSI6ImNqYW9iaDM0ZTBmZXAyeG1paW12MzM4MnAifQ.Lz_wF3srdlOYOJBvwWT5VA'; <!--Please do not use my token-->
-		var uploadedDataURL = {{ site.data.changzhouGPS2 | jsonify }};
+		var uploadedDataURL = {{ site.data.didi_01 | jsonify }};
 <!-- var uploadedDataURL = "./js/changzhouGPS2.json"-->
 		
 		<!--use json.parse(linedata) instead if running it locally-->
@@ -598,7 +598,7 @@ It may take a while to load the map.</p>
 				};
 					myChart.setOption({
 						mapbox: {
-						center: [119.9689,31.812772],
+						center: [121.4782011832,31.1642802672],
 						zoom: 10,
 						// pitch: 50,
 						// bearing: -50,
