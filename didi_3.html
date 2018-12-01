@@ -1,38 +1,40 @@
 <!DOCTYPE html>
-<html style="height: 100%">
-   <head>
-		<script type="text/javascript" src="./js/echarts.js"></script>
-		<script type="text/javascript" src="./js/json_parse.js"></script>
-		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-		<script type="text/javascript" src="http://echarts.baidu.com/resource/echarts-gl-latest/dist/echarts-gl.min.js"></script>
-	    <script src='https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.js'></script>
-	    <link href='https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.css' rel='stylesheet' />
-       <meta charset="utf-8">
-   </head>
-   
-   <body style="height: 100%; margin: 0">
-      <div id="container" style="width:100%;height:100%;"></div>
-      <br>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="" />
+	<script src="./js/echarts.min.js"></script>
+	<script src="./js/leaflet.js"></script>
+	<script type="text/javascript" src="./js/json_parse.js"></script>
+	<script src="./js/echarts-leaflet.js"></script>
+	<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src='https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.js'></script>
+	<link href='https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.css' rel='stylesheet' />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
 
-
+</body>
+</html>
+<div id="Changzhou" style="width: 650px;height:650px;"></div>
       <script type="text/javascript">
-        var myChart = echarts.init(document.getElementById('container'));
+        var myChart = echarts.init(document.getElementById('Changzhou'));
 		 
 		mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JlYXRyYWRhIiwiYSI6ImNqYW9iaDM0ZTBmZXAyeG1paW12MzM4MnAifQ.Lz_wF3srdlOYOJBvwWT5VA'; <!--Please do not use my token-->
+		var uploadedDataURL = {{ site.data.didi_01 | jsonify }};
+<!-- var uploadedDataURL = "./js/changzhouGPS2.json"-->
 		
-		var uploadedDataURL = "./js/didi_01.json";
-		
-		$.getJSON(uploadedDataURL, function(linedata){
 		<!--use json.parse(linedata) instead if running it locally-->
-				var data1 = json_parse(JSON.stringify(linedata))
-				data1 = data1.data;
+				data2 = uploadedDataURL.data;
 			    var taxiRoutes =[];
 				var i = 0;
-				for (var x in data1) {
+				for (var x in data2) {
 					// i++;
 					// if(i<5000)
 					//     continue;
-					var line = data1[x];
+					var line = data2[x];
 					// if(busLines.length>500)
 					//     break;
 					var pointString = line.ROAD_LINE;
@@ -106,9 +108,5 @@
 								}
 							}
 							}]
-						})
-		})
+						})	
        </script>
-       <p id='p1', style = "font-size:30px;color:rgba(255, 255, 255, 0.5);left:50px;top:240px;position:relative;">2017-12-22 16:00:00</p>
-   </body>
-</html>
