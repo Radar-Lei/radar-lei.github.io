@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+
+<head>
+    <script type="text/javascript" src="./js/echarts.js"></script>
+    <script type="text/javascript" src="./js/json_parse.js"></script>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/resource/echarts-gl-latest/dist/echarts-gl.min.js"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        #div_relative{
+			position: relative;
+			width: 100%;
+			height: 100%;
+		}
+		#container{
+			position: absolute; 
+			width:100%;
+			height:100%
+		}
+		#timer{
+			position: absolute; 
+			font-size:30px;
+			color:rgba(255, 255, 255, 0.5);
+			left:5%;
+			top: 10%;
+		}
+		</style>
+    <meta charset="utf-8">
+</head>
+
+<body style="height: 100%; margin: 0">
+    <div id="div_relative">
+        <div id="container"></div>
+        <div id="timer">
+            <!--<p>2017-12-22 16:00:00</p>-->
+        </div>
+    </div>
+    <br>
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('container'));
+
+        mapboxgl.accessToken =
+            'pk.eyJ1IjoiZ3JlYXRyYWRhIiwiYSI6ImNqYW9iaDM0ZTBmZXAyeG1paW12MzM4MnAifQ.Lz_wF3srdlOYOJBvwWT5VA'; <!--Please do not use my token-->
+
+        var uploadedDataURL = "./js/test.json";
+
+        $.getJSON(uploadedDataURL, function (linedata) {
+            //use json.parse(linedata) instead if running it locally
+            var data1 = json_parse(JSON.stringify(linedata))
+            data1 = data1.data;
+            var taxiRoutes = [];
+            var i = 0;
+            for (var x in data1) {
+                // i++;
+                // if(i<5000)
+                //     continue;
+                var line = data1[x];
+                // if(busLines.length>500)
+                //     break;
+                var pointString = line.ROAD_LINE;
+                var pointArr = pointString.split(';');
+                var lnglats = [];
+                for (var j in pointArr) {
+                    lnglats.push(pointArr[j].split(','))
+                };
+                taxiRoutes.push({
+                    coords: lnglats,
+                    lineStyle: {
+                        // color: echarts.color.modifyHSL('#5A94DF', Math.round(hStep * x))
+                    }
+                })
+            };
+            myChart.setOption({
+                mapbox: {
+                    center: [-81.660895, 30.325941],
+                    zoom: 8,
+                    // pitch: 50,
+                    // bearing: -50,
+
+                    altitudeScale: 10000000,
+
+                    style: 'mapbox://styles/mapbox/dark-v9',
+                    postEffect: {
+                        enable: true,
+                        FXAA: {
+                            enable: true
+                        }
+                    },
+                    light: {
+                        main: {
+                            intensity: 1,
+                            shadow: true,
+                            shadowQuality: 'high'
+                        },
+                        ambient: {
+                            intensity: 0.
+                        }
+                    }
+                },
+                series: [{
+                    type: 'lines3D',
+
+                    coordinateSystem: 'mapbox',
+
+                    effect: {
+                        show: true,
+                        //period: 30,
+                        //trailLength: 0.5,
+                        //symbolSize: 4
+                        constantSpeed: 2,
+                        trailWidth: 4,
+                        trailLength: 1,
+                        trailOpacity: 1,
+                        spotIntensity: 10
+                    },
+
+                    blendMode: 'lighter',
+
+                    polyline: true,
+
+                    lineStyle: {
+                        width: 0.1,
+                        color: 'rgb(200, 40, 0)',
+                        opacity: 0.
+                    },
+
+                    data: {
+                        count: function () {
+                            return taxiRoutes.length;
+                        },
+                        getItem: function (idx) {
+                            return taxiRoutes[idx]
+                        }
+                    }
+                }]
+            })
+        })
+    </script>
+</body>
+
+</html>
