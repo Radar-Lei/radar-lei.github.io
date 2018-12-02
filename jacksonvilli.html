@@ -34,7 +34,7 @@
 	<div id="div_relative">
 		<div id="container"></div>
 		<div id="timer">
-		<!--<p>2017-12-22 16:00:00</p>-->
+			<!--<p>2017-12-22 16:00:00</p>-->
 		</div>
 	</div>
 	<br>
@@ -74,7 +74,7 @@
 			myChart.setOption({
 				mapbox: {
 					center: [-81.660895, 30.325941],
-					zoom: 10,
+					zoom: 8,
 					// pitch: 50,
 					// bearing: -50,
 
@@ -105,12 +105,12 @@
 
 					effect: {
 						show: true,
-						period: 30,
+						//period: 30,
 						//trailLength: 0.5,
 						//symbolSize: 4
-						//constantSpeed: 2,
-						trailWidth: 1,
-						trailLength: 0.4,
+						constantSpeed: 2,
+						trailWidth: 4,
+						trailLength: 1,
 						trailOpacity: 1,
 						spotIntensity: 10
 					},
