@@ -4,7 +4,7 @@
 <head>
 	<script type="text/javascript" src="./js/echarts.js"></script>
 	<script type="text/javascript" src="./js/json_parse.js"></script>
-	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="./js/jquery.min.js"></script>
 	<script type="text/javascript" src="http://echarts.baidu.com/resource/echarts-gl-latest/dist/echarts-gl.min.js"></script>
 	<script src='https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.js'></script>
 	<link href='https://api.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.css' rel='stylesheet' />
@@ -41,14 +41,13 @@
 	<script type="text/javascript">
 		var myChart = echarts.init(document.getElementById('container'));
 
-		mapboxgl.accessToken =
-			'pk.eyJ1IjoiZ3JlYXRyYWRhIiwiYSI6ImNqYW9iaDM0ZTBmZXAyeG1paW12MzM4MnAifQ.Lz_wF3srdlOYOJBvwWT5VA';
+		mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JlYXRyYWRhIiwiYSI6ImNqYW9iaDM0ZTBmZXAyeG1paW12MzM4MnAifQ.Lz_wF3srdlOYOJBvwWT5VA'; <!--Please do not use my token-->
 
 		var uploadedDataURL = "./js/test.json";
 
 		$.getJSON(uploadedDataURL, function (linedata) {
 			//use json.parse(linedata) instead if running it locally
-			var data1 = json_parse(JSON.stringify(linedata))
+			var data1 = json_parse(JSON.stringify(linedata)) 
 			data1 = data1.data;
 			var taxiRoutes = [];
 			var i = 0;
@@ -74,8 +73,8 @@
 			};
 			myChart.setOption({
 				mapbox: {
-					center: [-81.660895, 30.325941],
-					zoom: 8,
+					center: [-81.655647, 30.332184],
+					zoom: 9,
 					// pitch: 50,
 					// bearing: -50,
 
@@ -107,11 +106,10 @@
 					effect: {
 						show: true,
 						//period: 30,
-						//trailLength: 0.5,
 						//symbolSize: 4
-						constantSpeed: 2,
+						constantSpeed: 1,
 						trailWidth: 4,
-						trailLength: 1,
+						trailLength: 0.5,
 						trailOpacity: 1,
 						spotIntensity: 10
 					},
@@ -124,8 +122,9 @@
 						width: 0.1,
 						color: 'rgb(200, 40, 0)',
 						opacity: 0.
-					},
-
+					}, 
+					progressiveThreshold: 500,
+          progressive: 200,
 					data: {
 						count: function () {
 							return taxiRoutes.length;
